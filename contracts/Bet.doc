@@ -1,0 +1,45 @@
+// Note
+- winning team is statically type
+- owner is starting the match 
+- owner is ending the match 
+- winning amount is distributed as :  totalBalance / totalWinners
+- Already Enter players cannot enter again as it throws error
+
+
+// Contract Guidelines
+
+- Deploy State
+    - match is not started so isStarted is false
+    - match is not ended so isEnded is false
+    - total betters is 0
+    - we can add betters before match starts
+
+Steps to follow
+1. Before match starts we can add betters
+    
+    Better Address                                  team            amount to enroll
+    0xAb8483F64d9C6d1EcF9b849Ae677dD3315835cb2      India           1 ETHER    
+    0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db      India           1 ETHER
+    0x78731D3Ca6b7E34aC0F824c42a7cC18A495cabaB      Australia       1 ETHER    
+    0x617F2E2fD72FD9D5503197092aC168c91465E7f2      Australia       1 ETHER
+    0x17F6AD8Ef982297579C203069C1DbfFE4348c372      India           1 ETHER
+
+    - now we can check total players using getPlayers function
+
+
+2. call startMatch function to start match
+    - now betters cannot enroll to bet
+    - isStarted is converted to true
+
+3. Now let's end match using endMatch function
+    - as we already initialize our winning team is India
+    - So from total betters whoever choosen there team as India can get the winning amount
+    - total amount = 5 players * 1 ethers    //i.e 5 ethers
+    - amount per winner = total amount / totalWinners  //i.e  5 ethers / 3  = 1.666666667 ethers
+
+//Changes can occur with API
+[
+    1. Nobody is owner
+    2. Match is starting from data
+    3. After match ends, All the betters who bet on winning team get rewarded as winning amount.
+]

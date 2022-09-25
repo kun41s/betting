@@ -1,4 +1,4 @@
-# betting
+# Betting
 
 # Steps to Deploy
 1. git clone https://github.com/kun41s/betting.git
